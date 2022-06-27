@@ -13,7 +13,7 @@ const flash = require('connect-flash');
 const toastr = require('toastr')
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
-
+const port = process.env.PORT || 9000;
 
 
 
@@ -75,6 +75,6 @@ app.use(express.static('uploads'))
 
 
 
-app.listen(9000, () => {
+app.listen(port, () => {
     console.log('listening on 9000')
 })
