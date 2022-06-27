@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <div id="pageHeader-first">Vehicle Details</div> -->
+<!--         <div id="pageHeader-2">Header</div>
+        <div id="pageHeader-3">Header</div> -->
+        <center><h3>User Details</h3></center>
+        
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Mobileno</th> 
+                    <th>Attendance</th>
+                    <th>Dob</th>
+                    <th>Startdate</th>
+                    <th>Status</th>
+                    <th>Hobby</th>
+                </tr>
+            </thead>
+            {{#each vendors}}
+            
+
+            <tbody>
+                <tr>
+                    <td><img src ="http://localhost:9000/{{this.image}}" alt="profile image" width="60"></td>
+                    <!-- <td>{{this.image}}</td>               -->
+                     <td>{{this.firstname}}</td>
+                    <td>{{this.Lastname}}</td>
+                    <td>{{this.username}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.mobileno}}</td>
+                    <td>{{this.attendance}}</td>
+                    <td>{{this.dob}}</td>
+                    <td>{{this.startdate}}</td>
+                    <td>{{this.status}}</td>
+                    <td>{{this.hobby}}</td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+        <!-- <div id="pageFooter-first">Footer</div><div id="pageFooter-2">Footer</div><div id="pageFooter-3">Footer</div> -->
+    </body>
+</html>

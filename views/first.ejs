@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crud</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/css/toastr.min.css">
+    <link href="toastr.css" rel="stylesheet"/>
+
+
+  
+
+    <style>
+      .required::after {
+        content:" *";
+        color: red;
+      }
+    </style>
+   
+</head>
+<body>
+  <% if(locals.success){locals.success.forEach(function(msg) { %>
+    <div class="alert alert-success" role="alert"><%=msg%><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button></div>
+  <% })} %>
+  <% if(locals.errors){locals.errors.forEach(function(msg){ %>
+    <div class="alert alert-danger" role="alert"><%=msg%><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button></div>
+    <% })} %>
+    
+  
+    
+    
+    <form action="/addUser" method="post" enctype='multipart/form-data'>
+     
+      <label class="required">Profile </label></br>
+      <img id="blah" alt="Profile image" width="50" height="50"/>
+      <input type="file" name="image" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" class="form-control" <% if(locals.images) { %>value=<%= images %> <% } %></br>
+      <% if(locals.newError) { %>
+        <span style="color:rgb(234, 37, 37);">
+          <strong><%= newError.image%></strong></span></br>
+        <% } %>
+        <label class="required">First Name : </label>
+        <input type="text" name="firstname" class="form-control" id="firstname"  placeholder="Enter name " <% if(locals.forms) { %>value=<%= forms.firstnameholder %> <% } %>>
+        <% if(locals.newError) { %>
+          <span style="color:rgb(234, 37, 37);">
+            <strong><%= newError.firstname%></strong></span></br>
+          <% } %>
+       
+       
+        <label class="required">Last Name : </label>
+        <input type="text" name="Lastname" class="form-control" id="Lastname"  placeholder="Enter lastname " <% if(locals.forms) { %>value=<%= forms.Lastnameholder %> <% } %>>
+        <% if(locals.newError) { %>
+          <span style="color:rgb(234, 37, 37);">
+            <strong><%= newError.Lastname %></strong></span></br>
+          <% } %>
+        <label class="required">Username : </label>
+        <input type="text" name="username" class="form-control" id="username" placeholder="Enter username " <% if(locals.forms) { %>value=<%= forms.usernameholder %> <% } %>>
+        <% if(locals.newError) { %>
+          <span style="color:rgb(234, 37, 37);">
+            <strong><%= newError.username %></strong></span></br>
+          <% } %>
+        <label class="required">Email : </label>
+        <input type="text" name="email" class="form-control" id="email" placeholder="Enter email " <% if(locals.forms) { %>value=<%= forms.emailholder %> <% } %>>
+        <% if(locals.newError) { %>
+          <span style="color:rgb(234, 37, 37);">
+            <strong><%= newError.email %></strong></span></br>
+          <% } %>
+        <label class="required">Mobile no : </label>
+        <input type="mobileno" name="mobileno" class="form-control" id="mobileno" placeholder="Enter mobileno" <% if(locals.forms) { %>value=<%= forms.mobilenoholder %> <% } %>>
+        <% if(locals.newError) { %>
+          <span style="color:rgb(234, 37, 37);">
+            <strong><%= newError.mobileno %></strong></span></br>
+          <% } %>
+        <label>Dob : </label>
+        <input type="date" name="dob" class="form-control" id="dob" placeholder="Enter dob" <% if(locals.forms) { %>value=<%= forms.dobholder %> <% } %></br>
+        <label>Startdate : </label>
+        <input type="date" name="startdate" class="form-control" id="startdate" placeholder="Enter startdate"<% if(locals.forms) { %>value=<%= forms.startdateholder %> <% } %></br>
+        <% if(locals.newError) { %>
+          <span style="color:rgb(234, 37, 37);">
+            <strong><%= newError.startdate %></strong></span></br>
+          <% } %>
+        <label>Attendance : </label>
+        <input type="radio" name="attendance" class="radio" id="present" value="present" checked="checked"><label for="present">Present</label>
+        <input type="radio" name="attendance" class="radio" id="notpresent" value="notpresent"><label for="notpresent">Not present</label><br>
+        <label>Status : </label>
+        <input type="radio" name="status" class="radio" id="married" value="married" checked="checked"><label for="married">married</label>
+        <input type="radio" name="status" class="radio" id="unmarried" value="unmarried"><label for="unmarried">unmarried</label><br>
+        <label>Hobby :</label>
+        <select id="select1" name="hobby" >
+            <option  value="Not selected">Select</option>
+            <option  value="Cricket">Cricket</option>
+            <option value="Football">Football</option>
+            <option value="Reading">Reading</option>
+        </select></br>
+        
+       
+       
+        <input type="submit" class="btn btn-primary"  value="Add"  >
+        
+        <a href="/" class="btn btn-primary">cancel</a>
+
+        
+        
+        
+    </form>
+    
+    
+    <script src="toastr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<!-- <script>
+  alert: lo
+</script> -->
+<!-- <script>
+  console.log(JSON.stringify(locals.error))
+</script> -->
+    <!-- <script>
+        document.getElementById("button").addEventListener("change", function(){
+            if(this.checked){
+                let x = document.getElementById("button").value = true;
+                console.log(x)
+                localStorage.setItem('true', x);
+            }
+            else{
+                let x = document.getElementById("button").value = false;
+                console.log(x)
+                localStorage.setItem('false', x);
+            }
+        });
+        
+          
+
+
+
+
+        
+    </script> -->
+</body>
+</html>
